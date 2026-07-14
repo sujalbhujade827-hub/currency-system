@@ -48,7 +48,7 @@ jobs:
           cd Frontend
           npm install
 
-      - name: Run Frontend Build Check
+      - name: Run Angular Jasmine Tests
         run: |
           cd Frontend
-          echo "Frontend files verified successfully"
+          npx ng test --watch=false 
