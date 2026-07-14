@@ -4,12 +4,13 @@ on:
   push:
     branches:
       - master
+      - feature/fullstack-monorepo
   pull_request:
     branches:
       - master
+      - feature/fullstack-monorepo
 
 jobs:
-  # STAGE 1: Verify Backend Architecture
   backend-validation:
     runs-on: ubuntu-latest
     steps:
@@ -23,15 +24,14 @@ jobs:
 
       - name: Install Backend Tooling
         run: |
-          cd backend
+          cd Backend
           npm install
 
       - name: Run Jest Testing Suite
         run: |
-          cd backend
+          cd Backend
           npm test
 
-  # STAGE 2: Verify Frontend Architecture
   frontend-validation:
     runs-on: ubuntu-latest
     steps:
@@ -45,10 +45,10 @@ jobs:
 
       - name: Install Frontend Tooling
         run: |
-          cd frontend
+          cd Frontend
           npm install
 
       - name: Run Angular Jasmine Tests
         run: |
-          cd frontend
+          cd Frontend
           npx ng test --watch=false --browsers=ChromeHeadless
